@@ -1,5 +1,6 @@
 # LockdownPerUser Bundle
 
+A Kimai plugin that allows to set the lockdown period per user.
 
 ## Installation
 
@@ -7,7 +8,7 @@ This plugin is compatible with the following Kimai releases:
 
 | Bundle version    | Minimum Kimai version   |
 | ---               |---                      |
-| 1.0 - 1.1         | 1.15                    |
+| 1.0               | 1.16.9                  |
 
 ### Copy files
 
@@ -36,12 +37,8 @@ bin/console kimai:reload --env=prod
 
 This bundle comes with the following permissions:
 
-- `lockdown_per_user` - allow to configure 
+- `lockdown_per_user` - allow to configure the user specific lockdown settings
 
 By default, it is assigned to each user with the role `ROLE_SUPER_ADMIN`.
 
 Read how to manage the permission in the [documentation](https://www.kimai.org/documentation/permissions.html).
-
-## Screenshot
-
-Screenshots are available [in the store page](https://www.kimai.org/store/translation-bundle.html).

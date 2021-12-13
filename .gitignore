@@ -1,0 +1,4 @@
+.idea
+.disabled
+.php-cs-fixer.cache
+/vendor/

@@ -1,0 +1,64 @@
+{
+    "name": "kevinpapst/lockdown-per-user-plugin",
+    "description": "A Kimai plugin that allows to set the lockdown period per user.",
+    "homepage": "https://www.kimai.org/store/translation-bundle.html",
+    "type": "kimai-plugin",
+    "version": "1.0",
+    "keywords": [
+        "kimai",
+        "kimai-plugin"
+    ],
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Kevin Papst",
+            "email": "kevin@kevinpapst.de",
+            "homepage": "https://www.kevinpapst.de"
+        }
+    ],
+    "extra": {
+        "kimai": {
+            "require": "1.16.9",
+            "name": "LockdownPerUserBundle"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "KimaiPlugin\\LockdownPerUserBundle\\": ""
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "7.3"
+        },
+        "preferred-install": {
+            "*": "dist"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "codestyle": "vendor/bin/php-cs-fixer fix --dry-run --verbose --show-progress=none",
+        "codestyle-fix": "vendor/bin/php-cs-fixer fix",
+        "codestyle-check": "vendor/bin/php-cs-fixer fix --dry-run --verbose --using-cache=no --show-progress=none --format=checkstyle",
+        "phpstan": "vendor/bin/phpstan analyse . -c phpstan.neon --level=9",
+        "linting": [
+            "composer validate --strict --no-check-version",
+            "@codestyle-check",
+            "@phpstan"
+        ]
+    },
+    "require": {
+        "doctrine/dbal": "^2.1"
+    },
+    "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
+        "fakerphp/faker": "^1.15",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "kevinpapst/kimai2": "^1.15",
+        "phpstan/phpstan": "^1.0",
+        "phpstan/phpstan-doctrine": "^1.0",
+        "phpstan/phpstan-symfony": "^1.0",
+        "symfony/console": "^4.0",
+        "symfony/event-dispatcher": "^4.0"
+    }
+}
