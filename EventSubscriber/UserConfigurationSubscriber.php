@@ -19,13 +19,8 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 class UserConfigurationSubscriber implements EventSubscriberInterface
 {
-    private $storage;
-    private $configurations;
-
-    public function __construct(TokenStorageInterface $storage, SystemConfiguration $systemConfiguration)
+    public function __construct(private TokenStorageInterface $storage, private SystemConfiguration $systemConfiguration)
     {
-        $this->storage = $storage;
-        $this->configurations = $systemConfiguration;
     }
 
     public static function getSubscribedEvents(): array
@@ -38,7 +33,7 @@ class UserConfigurationSubscriber implements EventSubscriberInterface
     public function prepareUserProfileSettings(KernelEvent $event): void
     {
         // ignore sub-requests
-        if (!$event->isMasterRequest()) {
+        if (!$event->isMainRequest()) {
             return;
         }
 
@@ -50,20 +45,20 @@ class UserConfigurationSubscriber implements EventSubscriberInterface
         $user = $token->getUser();
 
         if ($user instanceof User) {
-            $start = $user->getPreferenceValue('timesheet.rules.lockdown_period_start');
+            $start = $user->getPreferenceValue('lockdown_period_start');
             if ($start === null) {
                 return;
             }
-            $this->configurations->offsetSet('timesheet.rules.lockdown_period_start', $start);
+            $this->systemConfiguration->offsetSet('timesheet.rules.lockdown_period_start', $start);
 
-            $end = $user->getPreferenceValue('timesheet.rules.lockdown_period_end');
-            $this->configurations->offsetSet('timesheet.rules.lockdown_period_end', $end);
+            $end = $user->getPreferenceValue('lockdown_period_end');
+            $this->systemConfiguration->offsetSet('timesheet.rules.lockdown_period_end', $end);
 
-            $grace = $user->getPreferenceValue('timesheet.rules.lockdown_grace_period');
-            $this->configurations->offsetSet('timesheet.rules.lockdown_grace_period', $grace);
+            $grace = $user->getPreferenceValue('lockdown_grace_period');
+            $this->systemConfiguration->offsetSet('timesheet.rules.lockdown_grace_period', $grace);
 
-            $timezone = $user->getPreferenceValue('timesheet.rules.lockdown_period_timezone');
-            $this->configurations->offsetSet('timesheet.rules.lockdown_period_timezone', $timezone);
+            $timezone = $user->getPreferenceValue('lockdown_period_timezone');
+            $this->systemConfiguration->offsetSet('timesheet.rules.lockdown_period_timezone', $timezone);
         }
     }
 }

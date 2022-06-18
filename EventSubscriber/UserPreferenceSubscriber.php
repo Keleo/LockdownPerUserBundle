@@ -21,13 +21,8 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class UserPreferenceSubscriber implements EventSubscriberInterface
 {
-    private $configurations;
-    private $voter;
-
-    public function __construct(SystemConfiguration $systemConfiguration, AuthorizationCheckerInterface $voter)
+    public function __construct(private SystemConfiguration $systemConfiguration, private AuthorizationCheckerInterface $voter)
     {
-        $this->configurations = $systemConfiguration;
-        $this->voter = $voter;
     }
 
     public static function getSubscribedEvents(): array
@@ -48,9 +43,9 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
         $lockdownGraceHelp = null;
         $dateFormat = 'D, d M Y H:i:s';
 
-        if ($this->configurations->isTimesheetLockdownActive()) {
+        if ($this->systemConfiguration->isTimesheetLockdownActive()) {
             $userTimezone = new \DateTimeZone($event->getUser()->getTimezone());
-            $timezone = $event->getUser()->getPreferenceValue('timesheet.rules.lockdown_period_timezone');
+            $timezone = $event->getUser()->getPreferenceValue('lockdown_period_timezone');
 
             if ($timezone !== null) {
                 $timezone = new \DateTimeZone((string) $timezone);
@@ -61,17 +56,17 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
             }
 
             try {
-                $lockdownPeriodStart = $event->getUser()->getPreferenceValue('timesheet.rules.lockdown_period_start');
+                $lockdownPeriodStart = $event->getUser()->getPreferenceValue('lockdown_period_start');
                 if ($lockdownPeriodStart !== null) {
                     $lockdownStartHelp = new \DateTime((string) $lockdownPeriodStart, $timezone);
                     $lockdownStartHelp->setTimezone($userTimezone);
                     $lockdownStartHelp = $lockdownStartHelp->format($dateFormat);
                 }
 
-                $lockdownPeriodEnd = $event->getUser()->getPreferenceValue('timesheet.rules.lockdown_period_end');
+                $lockdownPeriodEnd = $event->getUser()->getPreferenceValue('lockdown_period_end');
                 if ($lockdownPeriodEnd !== null) {
                     $lockdownEndHelp = new \DateTime((string) $lockdownPeriodEnd, $timezone);
-                    $lockdownGrace = $event->getUser()->getPreferenceValue('timesheet.rules.lockdown_grace_period');
+                    $lockdownGrace = $event->getUser()->getPreferenceValue('lockdown_grace_period');
                     if ($lockdownGrace !== null) {
                         $lockdownGraceHelp = clone $lockdownEndHelp;
                         $lockdownGraceHelp->modify((string) $lockdownGrace);
@@ -88,7 +83,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
 
         $event->addPreference(
             (new UserPreference())
-                ->setName('timesheet.rules.lockdown_period_start')
+                ->setName('lockdown_period_start')
                 ->setOrder(2000)
                 ->setType(TextType::class)
                 ->setSection('LockdownPerUser')
@@ -98,7 +93,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
 
         $event->addPreference(
             (new UserPreference())
-                ->setName('timesheet.rules.lockdown_period_end')
+                ->setName('lockdown_period_end')
                 ->setOrder(2010)
                 ->setType(TextType::class)
                 ->setSection('LockdownPerUser')
@@ -108,7 +103,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
 
         $event->addPreference(
             (new UserPreference())
-                ->setName('timesheet.rules.lockdown_period_timezone')
+                ->setName('lockdown_period_timezone')
                 ->setOrder(2020)
                 ->setType(TimezoneType::class)
                 ->setSection('LockdownPerUser')
@@ -117,7 +112,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
 
         $event->addPreference(
             (new UserPreference())
-                ->setName('timesheet.rules.lockdown_grace_period')
+                ->setName('lockdown_grace_period')
                 ->setOrder(2030)
                 ->setType(TextType::class)
                 ->setSection('LockdownPerUser')

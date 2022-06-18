@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 class LockdownPerUserExtension extends Extension implements PrependExtensionInterface
 {
     /**
-     * @param array $configs
+     * @param array<mixed> $configs
      * @param ContainerBuilder $container
      * @throws \Exception
      */

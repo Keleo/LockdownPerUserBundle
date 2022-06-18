@@ -6,4 +6,6 @@ services:
 
     KimaiPlugin\LockdownPerUserBundle\:
         resource: '../../*'
-        exclude: '../../{Resources}'
+        exclude:
+            - '../../Migrations/'
+            - '../../Resources/'

@@ -1,0 +1,12 @@
+# --------------------------------------------------------------------------------------------------
+# Generate a new migration with:
+# bin/console doctrine:migrations:diff --em=default --configuration=var/plugins/LockdownPerUserBundle/Migrations/lockdownperuser.yaml
+#
+# Execute all migrations with:
+# bin/console kimai:bundle:kiosk:install
+# bin/console doctrine:migrations:migrate --em=default --configuration=var/plugins/LockdownPerUserBundle/Migrations/lockdownperuser.yaml
+# --------------------------------------------------------------------------------------------------
+table_storage:
+    table_name: 'bundle_migration_lockdown'
+migrations_paths:
+    'LockdownPerUserBundle\Migrations': 'var/plugins/LockdownPerUserBundle/Migrations'
