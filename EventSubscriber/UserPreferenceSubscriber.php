@@ -82,8 +82,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
         }
 
         $event->addPreference(
-            (new UserPreference())
-                ->setName('lockdown_period_start')
+            (new UserPreference('lockdown_period_start'))
                 ->setOrder(2000)
                 ->setType(TextType::class)
                 ->setSection('LockdownPerUser')
@@ -92,8 +91,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
         );
 
         $event->addPreference(
-            (new UserPreference())
-                ->setName('lockdown_period_end')
+            (new UserPreference('lockdown_period_end'))
                 ->setOrder(2010)
                 ->setType(TextType::class)
                 ->setSection('LockdownPerUser')
@@ -102,8 +100,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
         );
 
         $event->addPreference(
-            (new UserPreference())
-                ->setName('lockdown_period_timezone')
+            (new UserPreference('lockdown_period_timezone'))
                 ->setOrder(2020)
                 ->setType(TimezoneType::class)
                 ->setSection('LockdownPerUser')
@@ -111,8 +108,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
         );
 
         $event->addPreference(
-            (new UserPreference())
-                ->setName('lockdown_grace_period')
+            (new UserPreference('lockdown_grace_period'))
                 ->setOrder(2030)
                 ->setType(TextType::class)
                 ->setSection('LockdownPerUser')
