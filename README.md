@@ -6,9 +6,9 @@ A Kimai plugin that allows to set the lockdown period per user.
 
 This plugin is compatible with the following Kimai releases:
 
-| Bundle version    | Minimum Kimai version   |
-| ---               |---                      |
-| 1.0               | 1.16.9                  |
+| Bundle version     | Minimum Kimai version    |
+|--------------------|--------------------------|
+| 1.0                | 1.16.9                   |
 
 ### Copy files
 
@@ -29,7 +29,7 @@ var/plugins/
 After uploading the files, Kimai needs to know about the new plugin. It will be found, once the cache was re-built:
 
 ```bash
-cd kimai2/
+cd kimai/
 bin/console kimai:reload --env=prod
 ```
 
