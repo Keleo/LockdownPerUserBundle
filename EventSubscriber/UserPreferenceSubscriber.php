@@ -86,7 +86,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
                 ->setOrder(2000)
                 ->setType(TextType::class)
                 ->setSection('LockdownPerUser')
-                ->setOptions(['help' => $lockdownStartHelp, 'translation_domain' => 'system-configuration', 'label' => 'label.timesheet.rules.lockdown_period_start'])
+                ->setOptions(['help' => $lockdownStartHelp, 'translation_domain' => 'system-configuration', 'label' => 'timesheet.rules.lockdown_period_start', 'required' => false])
                 ->addConstraint(new DateTimeFormat())
         );
 
@@ -95,7 +95,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
                 ->setOrder(2010)
                 ->setType(TextType::class)
                 ->setSection('LockdownPerUser')
-                ->setOptions(['help' => $lockdownEndHelp, 'translation_domain' => 'system-configuration', 'label' => 'label.timesheet.rules.lockdown_period_end'])
+                ->setOptions(['help' => $lockdownEndHelp, 'translation_domain' => 'system-configuration', 'label' => 'timesheet.rules.lockdown_period_end', 'required' => false])
                 ->addConstraint(new DateTimeFormat())
         );
 
@@ -104,7 +104,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
                 ->setOrder(2020)
                 ->setType(TimezoneType::class)
                 ->setSection('LockdownPerUser')
-                ->setOptions(['translation_domain' => 'system-configuration', 'label' => 'label.timesheet.rules.lockdown_period_timezone'])
+                ->setOptions(['translation_domain' => 'system-configuration', 'label' => 'timesheet.rules.lockdown_period_timezone', 'required' => false])
         );
 
         $event->addPreference(
@@ -112,7 +112,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
                 ->setOrder(2030)
                 ->setType(TextType::class)
                 ->setSection('LockdownPerUser')
-                ->setOptions(['help' => $lockdownGraceHelp, 'translation_domain' => 'system-configuration', 'label' => 'label.timesheet.rules.lockdown_grace_period'])
+                ->setOptions(['help' => $lockdownGraceHelp, 'translation_domain' => 'system-configuration', 'label' => 'timesheet.rules.lockdown_grace_period', 'required' => false])
                 ->addConstraint(new DateTimeFormat())
         );
     }
