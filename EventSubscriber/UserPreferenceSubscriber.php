@@ -14,6 +14,7 @@ use App\Configuration\SystemConfiguration;
 use App\Entity\UserPreference;
 use App\Event\UserPreferenceEvent;
 use App\Form\Type\TimezoneType;
+use App\Timesheet\LockdownService;
 use App\Validator\Constraints\DateTimeFormat;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -21,7 +22,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 class UserPreferenceSubscriber implements EventSubscriberInterface
 {
-    public function __construct(private SystemConfiguration $systemConfiguration, private AuthorizationCheckerInterface $voter)
+    public function __construct(private LockdownService $lockdownService, private AuthorizationCheckerInterface $voter)
     {
     }
 
@@ -43,7 +44,7 @@ class UserPreferenceSubscriber implements EventSubscriberInterface
         $lockdownGraceHelp = null;
         $dateFormat = 'D, d M Y H:i:s';
 
-        if ($this->systemConfiguration->isTimesheetLockdownActive()) {
+        if ($this->lockdownService->isLockdownActive()) {
             $userTimezone = new \DateTimeZone($event->getUser()->getTimezone());
             $timezone = $event->getUser()->getPreferenceValue('lockdown_period_timezone');
 
