@@ -1,7 +1,7 @@
 <?php
 
 $fileHeaderComment = <<<COMMENT
-This file is part of the LockdownPerUserBundle.
+This file is part of the LockdownPerUserBundle for Kimai.
 All rights reserved by Kevin Papst (www.kevinpapst.de).
 
 For the full copyright and license information, please view the LICENSE
@@ -78,8 +78,7 @@ $fixer
         'no_short_bool_cast' => true,
         'no_singleline_whitespace_before_semicolons' => true,
         'no_spaces_around_offset' => true,
-        'no_trailing_comma_in_list_call' => true,
-        'no_trailing_comma_in_singleline_array' => true,
+        'no_trailing_comma_in_singleline' => true,
         'no_unneeded_curly_braces' => true,
         'no_unneeded_final_method' => true,
         'no_unused_imports' => true,

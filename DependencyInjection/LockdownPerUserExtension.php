@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the LockdownPerUserBundle.
+ * This file is part of the LockdownPerUserBundle for Kimai.
  * All rights reserved by Kevin Papst (www.kevinpapst.de).
  *
  * For the full copyright and license information, please view the LICENSE
@@ -19,7 +19,7 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 class LockdownPerUserExtension extends Extension implements PrependExtensionInterface
 {
     /**
-     * @param array $configs
+     * @param array<mixed> $configs
      * @param ContainerBuilder $container
      * @throws \Exception
      */
