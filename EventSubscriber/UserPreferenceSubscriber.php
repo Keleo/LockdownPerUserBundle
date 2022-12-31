@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the LockdownPerUserBundle.
+ * This file is part of the LockdownPerUserBundle for Kimai.
  * All rights reserved by Kevin Papst (www.kevinpapst.de).
  *
  * For the full copyright and license information, please view the LICENSE
@@ -10,7 +10,6 @@
 
 namespace KimaiPlugin\LockdownPerUserBundle\EventSubscriber;
 
-use App\Configuration\SystemConfiguration;
 use App\Entity\UserPreference;
 use App\Event\UserPreferenceEvent;
 use App\Form\Type\TimezoneType;
