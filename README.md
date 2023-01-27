@@ -6,9 +6,10 @@ A Kimai plugin that allows to set the lockdown period per user.
 
 This plugin is compatible with the following Kimai releases:
 
-| Bundle version     | Minimum Kimai version    |
-|--------------------|--------------------------|
-| 1.0                | 1.16.9                   |
+| Bundle version | Minimum Kimai version |
+|----------------|-----------------------|
+| 2.0            | 2.0                   |
+| 1.0            | 1.16.9                |
 
 ### Copy files
 
