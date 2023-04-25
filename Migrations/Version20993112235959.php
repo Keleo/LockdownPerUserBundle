@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the LockdownPerUserBundle for Kimai.
+ * This file is part of the "Lockdown per User bundle" for Kimai.
  * All rights reserved by Kevin Papst (www.kevinpapst.de).
  *
  * For the full copyright and license information, please view the LICENSE
