@@ -1,7 +1,7 @@
 {
-    "name": "kevinpapst/lockdown-per-user-plugin",
+    "name": "keleo/lockdown-per-user-plugin",
     "description": "Allows to set the lockdown period per user.",
-    "homepage": "https://www.kevinpapst.de",
+    "homepage": "https://www.kimai.org/store/lockdown-per-user-bundle.html",
     "type": "kimai-plugin",
     "version": "2.0",
     "keywords": [
@@ -12,7 +12,7 @@
     "authors": [
         {
             "name": "Kevin Papst",
-            "homepage": "https://www.kevinpapst.de"
+            "homepage": "https://www.keleo.de"
         }
     ],
     "extra": {
