@@ -49,16 +49,16 @@ class UserConfigurationSubscriber implements EventSubscriberInterface
             if ($start === null) {
                 return;
             }
-            $this->systemConfiguration->offsetSet('timesheet.rules.lockdown_period_start', $start);
+            $this->systemConfiguration->set('timesheet.rules.lockdown_period_start', $start);
 
             $end = $user->getPreferenceValue('lockdown_period_end');
-            $this->systemConfiguration->offsetSet('timesheet.rules.lockdown_period_end', $end);
+            $this->systemConfiguration->set('timesheet.rules.lockdown_period_end', $end);
 
             $grace = $user->getPreferenceValue('lockdown_grace_period');
-            $this->systemConfiguration->offsetSet('timesheet.rules.lockdown_grace_period', $grace);
+            $this->systemConfiguration->set('timesheet.rules.lockdown_grace_period', $grace);
 
             $timezone = $user->getPreferenceValue('lockdown_period_timezone');
-            $this->systemConfiguration->offsetSet('timesheet.rules.lockdown_period_timezone', $timezone);
+            $this->systemConfiguration->set('timesheet.rules.lockdown_period_timezone', $timezone);
         }
     }
 }
