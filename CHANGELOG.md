@@ -1,4 +1,8 @@
-# Changelog
+## Version 3.0.0
+
+Compatibility: requires minimum Kimai 3.0.0
+
+- Compatibility with Symfony 7.4
 
 ## 2.1.0
 

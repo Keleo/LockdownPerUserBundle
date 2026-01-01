@@ -3,7 +3,7 @@
     "description": "Allows to set the lockdown period per user.",
     "homepage": "https://www.kimai.org/store/lockdown-per-user-bundle.html",
     "type": "kimai-plugin",
-    "version": "2.1.0",
+    "version": "3.0.0",
     "keywords": [
         "kimai",
         "kimai-plugin"
@@ -17,7 +17,7 @@
     ],
     "extra": {
         "kimai": {
-            "require": 20000,
+            "require": 30000,
             "name": "Lockdown per user"
         }
     },
